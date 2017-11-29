@@ -1,0 +1,33 @@
+<div class="form-container">
+  <h1>Please add a new log</h1>
+  <form (ngSubmit)="submitForm(myForm)" #myForm="ngForm" novalidate>
+    <div class="field" [ngClass]="{'has-error': feedbackEnabled && myPerson.errors}">
+      <label>Username</label>
+      <input type="text" name="person" [(ngModel)]="newUser.person" #myPerson="ngModel" required minlength="2" />
+      <div *ngIf="feedbackEnabled && myPerson.errors">
+        <p *ngIf="myPerson.errors.required" class="validation">Name is required</p>
+        <p *ngIf="myPerson.errors.minlength" class="validation">Name need to be minimum 2 characters long.</p>
+      </div>
+    </div>
+
+    <div class="field" [ngClass]="{'has-error': feedbackEnabled && myMessage.errors}">
+      <label>Message</label>
+      <textarea rows="4" cols="50" name="message" [(ngModel)]="newUser.message" #myMessage="ngModel" required minlength="6"></textarea>
+      <div *ngIf="feedbackEnabled && myMessage.errors">
+        <p *ngIf="myMessage.errors.required" class="validation">Message required</p>
+        <p *ngIf="myMessage.errors.minlength" class="validation">Name need to be minimum 6 characters long.</p>
+      </div>
+    </div>
+
+    <div class="field submit">
+      <button type="submit">Login</button>
+      <div *ngIf="feedbackEnabled && myForm.invalid">
+        <p class="validation">There are errors in the form, please review the fields</p>
+      </div>
+      <div *ngIf="displaySuccessMsg && myForm.form.touched === true">
+        <p class="success">Registration was successful.
+        </p>
+      </div>
+    </div>
+  </form>
+</div>

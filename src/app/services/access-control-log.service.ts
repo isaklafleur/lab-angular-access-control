@@ -1,34 +1,38 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
+import { LogMessage } from "../models/LogMessage.model";
 
 @Injectable()
 export class AccessControlLogService {
-  logMessages: Array<Object> = [
+  logMessages: LogMessage[] = [
     {
-      person: 'isak',
-      message: 'taking out a book',
+      person: "isak",
+      message: "taking out a book",
       createdAt: new Date(),
     },
     {
-      person: 'Juan',
-      message: 'getting a pencil',
+      person: "Juan",
+      message: "getting a pencil",
       createdAt: new Date(),
     },
-  ]
+  ];
+  newLog = new LogMessage();
   constructor() { }
 
   getAccessLog() {
     return this.logMessages;
   }
-  addAccessItem(person: string, message: string) {
+  addAccessItem(log) {
     const newLog = {
-      person: person,
-      message: message,
+      person: log.person,
+      message: log.message,
       createdAt: new Date(),
-    }
+    };
     this.logMessages.push(newLog);
+    console.log("================================");
+    console.log("ACCESS LOG");
+    console.log("================================");
     this.logMessages.forEach(logMessage => {
-      console.log(logMessage['person'], logMessage['message']);
+      console.log(logMessage.person, logMessage.message, logMessage.createdAt);
     });
-
   }
 }

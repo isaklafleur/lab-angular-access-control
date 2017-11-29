@@ -1,21 +1,28 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { BrowserModule } from "@angular/platform-browser";
+import { NgModule } from "@angular/core";
+import { FormsModule } from "@angular/forms";
 
-import { AppComponent } from './app.component';
-import { LogFormComponentComponent } from './components/log-form-component/log-form-component.component';
-import { AccessControlLogService } from './services/access-control-log.service';
+////////////////////////////////////////////////////////////////////
+// SERVICES
+////////////////////////////////////////////////////////////////////
+import { AccessControlLogService } from "./services/access-control-log.service";
+
+
+////////////////////////////////////////////////////////////////////
+// COMPONENTS
+////////////////////////////////////////////////////////////////////
+import { AppComponent } from "./app.component";
+import { LogFormComponent } from "./components/log-form/log-form.component";
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    LogFormComponentComponent
+    LogFormComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule,
-    HttpModule
+    FormsModule
   ],
   providers: [AccessControlLogService],
   bootstrap: [AppComponent]

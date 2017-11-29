@@ -1,1 +1,53 @@
 /* You can add global styles to this file, and also import other style files */
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+
+/* -- remove blue borders around divv, buttons, inputs, etc.  -- */
+
+*:focus {
+  outline: none;
+}
+
+
+/* -- forms -- */
+
+form.is-processing {
+  opacity: 0.5;
+}
+
+form .field {
+  margin-bottom: 20px;
+}
+
+form label {
+  display: block;
+  margin-bottom: 10px;
+  font-style: bold;
+}
+
+form .field.has-error label {
+  color: red;
+}
+
+form .validation {
+  margin: 5px 0 10px;
+  color: red;
+}
+
+form .success {
+  margin: 5px 0 10px;
+  color: green;
+}
+
+form .field.has-error input {
+  border: 1px solid red;
+}
