@@ -19,7 +19,7 @@ export class AccessControlLogService {
   getAccessLog() {
     return this.logMessages;
   }
-  addAccessItem(person:string, message:string) {
+  addAccessItem(person: string, message: string) {
     const newLog = {
       person: person,
       message: message,

@@ -1,0 +1,27 @@
+<div class="container">
+  <form class="form-signin" (ngSubmit)="submitForm(myForm)" #myForm="ngForm" novalidate>
+    <h2 class="form-signin-heading">Please add a new log</h2>
+    <label for="inputPerson" class="sr-only">Person</label>
+    <input id="inputPerson" class="form-control" placeholder="Name of Person" type="text" name="person" [(ngModel)]="person"
+      #myPerson="ngModel" minlength="2" required autofocus/>
+
+    <label for="inputMessage" class="sr-only">Message</label>
+    <input type="text" name="message" id="inputMessage" class="form-control" placeholder="Message" [(ngModel)]="message" #myMessage="ngModel"
+      minlength="2" required />
+
+    <button class="btn btn-lg btn-primary btn-block" type="submit" [disabled]="!myForm.form.valid">Create new Log</button>
+    <br>
+    <div *ngIf="display">
+      <p class="alert alert-success step" [class.show]="!fadeout" role="alert">Successfully saved the log!</p>
+    </div>
+    <div *ngIf="myPerson.errors && (myPerson.dirty || myPerson.touched)">
+      <p class="alert alert-danger" role="alert" [hidden]="!myPerson.errors.minlength">
+        Name must be at least 2 characters long.
+      </p>
+    </div>
+    <div *ngIf="myMessage.errors && (myMessage.dirty || myMessage.touched)">
+      <p class="alert alert-danger" role="alert" [hidden]="!myMessage.errors.minlength">
+        Message must be at least 2 characters long.
+      </p>
+    </div>
+  </form>

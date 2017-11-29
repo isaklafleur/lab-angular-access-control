@@ -8,15 +8,15 @@ import { AccessControlLogService } from '../../services/access-control-log.servi
   styleUrls: ['./log-form-component.component.css']
 })
 export class LogFormComponentComponent implements OnInit {
-display:Boolean = false;
-person:String = '';
-message:String = '';
-fadeout:Boolean = false;
-  constructor(private addPersonLogService: AccessControlLogService ) { }
+  display: Boolean = false;
+  person: String = '';
+  message: String = '';
+  fadeout: Boolean = false;
+  constructor(private addPersonLogService: AccessControlLogService) { }
 
   ngOnInit() {
   }
-   submitForm(myForm) {
+  submitForm(myForm) {
     console.log(myForm);
     this.addPersonLogService.addAccessItem(myForm.value.person, myForm.value.message);
     this.display = true;
