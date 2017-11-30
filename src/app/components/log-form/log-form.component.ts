@@ -9,28 +9,24 @@ import { AccessControlLogService } from "../../services/access-control-log.servi
   styleUrls: ["./log-form.component.css"],
 })
 export class LogFormComponent implements OnInit {
-  newUser = new LogMessage();
+  newLog = new LogMessage({});
   feedbackEnabled = false;
   displaySuccessMsg = false;
   fadeout = false;
-  constructor(private addPersonLogService: AccessControlLogService) { }
+  constructor(private accessControlLogService: AccessControlLogService) { }
 
   ngOnInit() {
   }
   submitForm(myForm) {
     this.feedbackEnabled = true;
     if (myForm.valid) {
-      this.addPersonLogService.addAccessItem(this.newUser);
-      this.newUser = new LogMessage();
+      this.accessControlLogService.addAccessItem(this.newLog);
+      this.newLog = new LogMessage({});
       this.feedbackEnabled = false;
       this.displaySuccessMsg = true;
       window.setTimeout(() => {
-        myForm.reset();
         this.displaySuccessMsg = false;
-
       }, 2000);
-    } else {
-
     }
   }
 }
